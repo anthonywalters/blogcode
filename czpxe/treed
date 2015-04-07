@@ -1,0 +1,39 @@
+root@pxe:/srv/tftp# tree -d
+.
+├── images
+│   ├── clonezilla
+│   │   ├── boot
+│   │   │   └── grub
+│   │   ├── EFI
+│   │   │   ├── boot
+│   │   │   └── images
+│   │   ├── home
+│   │   │   └── partimag
+│   │   ├── live
+│   │   ├── syslinux
+│   │   └── utils
+│   │       ├── linux
+│   │       ├── mbr
+│   │       ├── win32
+│   │       └── win64
+│   ├── debianlxde
+│   ├── gparted
+│   │   ├── boot
+│   │   │   └── grub
+│   │   ├── EFI
+│   │   │   ├── boot
+│   │   │   └── images
+│   │   ├── live
+│   │   ├── syslinux
+│   │   └── utils
+│   │       ├── linux
+│   │       ├── mbr
+│   │       ├── win32
+│   │       └── win64
+│   ├── memtest86
+│   └── systemrescuecd-x86-4.4.1
+├── menus
+└── pxelinux.cfg
+
+34 directories
+root@pxe:/srv/tftp#
