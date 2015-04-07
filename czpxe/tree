@@ -1,0 +1,144 @@
+root@pxe:/srv/tftp# tree
+.
+├── chain.c32
+├── ifcpu64.c32
+├── images
+│   ├── clonezilla
+│   │   ├── boot
+│   │   │   └── grub
+│   │   │       └── grub.cfg
+│   │   ├── Clonezilla-Live-Version
+│   │   ├── EFI
+│   │   │   ├── boot
+│   │   │   │   ├── bootia32.efi
+│   │   │   │   ├── bootx64.efi
+│   │   │   │   ├── grub.cfg
+│   │   │   │   ├── ocswp-grub2.png
+│   │   │   │   └── unicode.pf2
+│   │   │   └── images
+│   │   │       └── efiboot.img
+│   │   ├── GPL
+│   │   ├── home
+│   │   │   └── partimag
+│   │   ├── live
+│   │   │   ├── filesystem.packages
+│   │   │   ├── filesystem.packages-remove
+│   │   │   ├── filesystem.squashfs
+│   │   │   ├── freedos.img
+│   │   │   ├── initrd.img
+│   │   │   ├── ipxe.lkn
+│   │   │   ├── memtest
+│   │   │   └── vmlinuz
+│   │   ├── syslinux
+│   │   │   ├── chain.c32
+│   │   │   ├── drblwp.png
+│   │   │   ├── isolinux.bin
+│   │   │   ├── isolinux.cfg
+│   │   │   ├── iso_sort.txt
+│   │   │   ├── ldlinux.c32
+│   │   │   ├── libcom32.c32
+│   │   │   ├── libutil.c32
+│   │   │   ├── memdisk
+│   │   │   ├── menu.c32
+│   │   │   ├── ocswp.png
+│   │   │   ├── syslinux.cfg
+│   │   │   └── vesamenu.c32
+│   │   └── utils
+│   │       ├── linux
+│   │       │   ├── extlinux
+│   │       │   ├── makeboot.sh
+│   │       │   ├── syslinux
+│   │       │   └── VERSION.txt
+│   │       ├── mbr
+│   │       │   └── mbr.bin
+│   │       ├── README.txt
+│   │       ├── win32
+│   │       │   ├── makeboot.bat
+│   │       │   ├── syslinux.exe
+│   │       │   └── VERSION.txt
+│   │       └── win64
+│   │           ├── makeboot64.bat
+│   │           ├── syslinux64.exe
+│   │           └── VERSION.txt
+│   ├── debianlxde
+│   │   ├── debian-live-7.5-amd64-lxde-desktop+nonfree.initrd.img
+│   │   ├── debian-live-7.5-amd64-lxde-desktop+nonfree.squashfs
+│   │   ├── debian-live-7.5-amd64-lxde-desktop+nonfree.squashfs.packages
+│   │   └── debian-live-7.5-amd64-lxde-desktop+nonfree.vmlinuz
+│   ├── gparted
+│   │   ├── boot
+│   │   │   └── grub
+│   │   │       └── grub.cfg
+│   │   ├── EFI
+│   │   │   ├── boot
+│   │   │   │   ├── bootia32.efi
+│   │   │   │   ├── bootx64.efi
+│   │   │   │   ├── grub.cfg
+│   │   │   │   ├── Gsplash.png
+│   │   │   │   └── unicode.pf2
+│   │   │   └── images
+│   │   │       └── efiboot.img
+│   │   ├── gparted-live-0.19.0-1-i686-pae.zip
+│   │   ├── GParted-Live-Version
+│   │   ├── GPL
+│   │   ├── live
+│   │   │   ├── filesystem.packages
+│   │   │   ├── filesystem.packages-remove
+│   │   │   ├── filesystem.squashfs
+│   │   │   ├── initrd.img
+│   │   │   ├── memtest
+│   │   │   └── vmlinuz
+│   │   ├── syslinux
+│   │   │   ├── chain.c32
+│   │   │   ├── Gsplash.png
+│   │   │   ├── isolinux.bin
+│   │   │   ├── isolinux.cfg
+│   │   │   ├── iso_sort.txt
+│   │   │   ├── ldlinux.c32
+│   │   │   ├── libcom32.c32
+│   │   │   ├── libutil.c32
+│   │   │   ├── memdisk
+│   │   │   ├── menu.c32
+│   │   │   ├── syslinux.cfg
+│   │   │   └── vesamenu.c32
+│   │   └── utils
+│   │       ├── linux
+│   │       │   ├── extlinux
+│   │       │   ├── makeboot.sh
+│   │       │   ├── syslinux
+│   │       │   └── VERSION.txt
+│   │       ├── mbr
+│   │       │   └── mbr.bin
+│   │       ├── README.txt
+│   │       ├── win32
+│   │       │   ├── makeboot.bat
+│   │       │   ├── syslinux.exe
+│   │       │   └── VERSION.txt
+│   │       └── win64
+│   │           ├── makeboot64.bat
+│   │           ├── syslinux64.exe
+│   │           └── VERSION.txt
+│   ├── memtest86
+│   │   └── memtest
+│   └── systemrescuecd-x86-4.4.1
+│       ├── initram.igz
+│       ├── rescue32
+│       ├── rescue64
+│       ├── sysrcd.dat
+│       ├── sysrcd.md5
+│       └── version
+├── index.html
+├── mboot.c32
+├── memdisk
+├── menu.c32
+├── menus
+│   └── pxemenu-background.png
+├── pxechain.com
+├── pxelinux.0
+├── pxelinux.cfg
+│   ├── 0A6A51
+│   └── default
+└── vesamenu.c32
+
+34 directories, 105 files
+root@pxe:/srv/tftp#
