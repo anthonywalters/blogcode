@@ -1,0 +1,109 @@
+default vesamenu.c32
+prompt 0
+timeout 300
+
+#Uncomment the next two lines to hide the PXE menu
+#MENU SHIFTKEY 1 # despite it's name, it's the CTRL+ALT keys you press to get the menu!
+#NOESCAPE 1 # required for SHIFTKEY to work
+
+ONTIMEOUT local
+ALLOWOPTIONS 0
+
+MENU BACKGROUND menus/pxemenu-background.png
+#MENU WIDTH 77
+MENU ROWS 20
+#MENU TABMSGROW 25
+#MENU CMDLINEROW 25
+#MENU HELPMSGROW 23
+#MENU MARGIN 15
+#MENU VSHIFT 4
+MENU COLOR BORDER       30;44   #00000000 #00000000 none
+MENU COLOR SEL          7;37;40 #ffffffff #9090a0f0 std
+MENU COLOR HOTSEL       7;37;40 #ffffffff #204040f0 std
+MENU COLOR TIMEOUT_MSG  37;40   #aaaaaaaa #00000000 std
+MENU COLOR TIMEOUT      1;37;40 #ffaaaaff #00000000 std
+
+MENU TITLE DCAM PXE Menu v0.7
+
+LABEL local
+	MENU DEFAULT
+	MENU LABEL Boot from ^local drive
+	COM32 chain.c32
+	APPEND hd0
+#	localboot 0xffff
+
+#LABEL Clonezilla-live
+#	MENU LABEL Clonezilla Live (Ramdisk)
+#	KERNEL images/clonezilla/live/vmlinuz
+#	APPEND initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset ocs_live_run="ocs-live-general" ocs_live_extra_param="" keyboard-layouts="" ocs_live_batch="no" locales="" vga=788 nosplash noprompt fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Deploy_genlab_image
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL Deploy General Lab winlin image 2014
+    kernel images/clonezilla/live/vmlinuz
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt ocs_lang="en_US.UTF-8" ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -b -r -j2 -p reboot restoredisk DCAM-CZ-GenFinal-winlin-v3-yessp-yeslp-20140903 sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Deploy_P1111_image
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL Deploy P1111 windows image 2014
+    kernel images/clonezilla/live/vmlinuz
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt ocs_lang="en_US.UTF-8" ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -icds -e2 -b -r -j2 -p reboot restoredisk DCAM-CZ-GenbuildFinal-Sep14-120GB-YESSP-20140901 sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Download_dcam_image_over_SSH 
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+	MENU LABEL Download a DCAM image from clonezilla.comp.dkit.ie
+	kernel images/clonezilla/live/vmlinuz
+	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt ocs_lang="en_US.UTF-8" ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Download_dcam_image_over_SSH_BIG_SMALL
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+	MENU LABEL Download BIG to SMALLER disk image from clonezilla.comp.dkit.ie
+	kernel images/clonezilla/live/vmlinuz
+	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt ocs_lang="en_US.UTF-8" ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -icds -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Upload_dcam_image_over_SSH 
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+	MENU LABEL ^Upload a DCAM image to clonezilla.comp.dkit.ie
+	kernel images/clonezilla/live/vmlinuz 
+	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nomodeset noprompt edd=on ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -p true savedisk ask_user ask_user" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Download_musmed_image_over_SSH 
+	MENU LABEL Download a MUSMED image from clonezilla.comp.dkit.ie
+	kernel images/clonezilla/live/vmlinuz 
+	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt ocs_lang="en_US.UTF-8" ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 musmed@10.108.150.22:/srv/clonezilla_images/musmed /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL Upload_musmed_image_over_SSH 
+	MENU LABEL Upload a MUSMED image to clonezilla.comp.dkit.ie
+	kernel images/clonezilla/live/vmlinuz 
+	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nomodeset noprompt edd=on ocs_live_keymap="NONE" ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 musmed@10.108.150.22:/srv/clonezilla_images/musmed /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -p true savedisk ask_user ask_user" vga=788  nosplash fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+
+LABEL GParted Live
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL GParted Live
+    kernel images/gparted/live/vmlinuz
+    append initrd=images/gparted/live/initrd.img boot=live config union=aufs noswap noprompt vga=788 fetch=http://10.108.150.38/images/gparted/live/filesystem.squashfs
+
+LABEL systemrescuecd-x86-4.4.1-amd64
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL System Rescue CD x86 v4.4.1 amd64
+    kernel images/systemrescuecd-x86-4.4.1/rescue64
+    append dostartx setkmap=uk scandelay=5 dodhcp initrd=images/systemrescuecd-x86-4.4.1/initram.igz netboot=http://10.108.150.38/images/systemrescuecd-x86-4.4.1/sysrcd.dat
+
+LABEL systemrescuecd-x86-4.4.1-i386
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL System Rescue CD x86 v4.4.1 i386
+    kernel images/systemrescuecd-x86-4.4.1/rescue32
+    append dostartx setkmap=uk scandelay=5 dodhcp initrd=images/systemrescuecd-x86-4.4.1/initram.igz netboot=http://10.108.150.38/images/systemrescuecd-x86-4.4.1/sysrcd.dat
+
+LABEL debian-lxde
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+	MENU LABEL debian lxde
+	KERNEL images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.vmlinuz
+	APPEND initrd=images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.initrd.img boot=live config noswap nolocales edd=on nomodeset locales="" vga=788 nosplash noprompt fetch=http://10.108.150.38/images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.squashfs
+
+LABEL Memtest86+
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL Memtest86+
+    kernel images/memtest86/memtest
+
+
