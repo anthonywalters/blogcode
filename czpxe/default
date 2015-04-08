@@ -51,31 +51,33 @@ LABEL Deploy_P1111_image
 
 LABEL Download_dcam_image_over_SSH 
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
-	MENU LABEL Download a DCAM image from clonezilla.comp.dkit.ie
-	kernel images/clonezilla/live/vmlinuz
-	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+    MENU LABEL Download a DCAM image from clonezilla.comp.dkit.ie
+    kernel images/clonezilla/live/vmlinuz
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
 
 LABEL Download_dcam_image_over_SSH_BIG_SMALL
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
-	MENU LABEL Download BIG to SMALLER disk image from clonezilla.comp.dkit.ie
-	kernel images/clonezilla/live/vmlinuz
-	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -icds -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+    MENU LABEL Download BIG to SMALLER disk image from clonezilla.comp.dkit.ie
+    kernel images/clonezilla/live/vmlinuz
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -icds -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
 
 LABEL Upload_dcam_image_over_SSH 
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
-	MENU LABEL ^Upload a DCAM image to clonezilla.comp.dkit.ie
-	kernel images/clonezilla/live/vmlinuz 
-	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nomodeset noprompt edd=on locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -p true savedisk ask_user ask_user" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+    MENU LABEL ^Upload a DCAM image to clonezilla.comp.dkit.ie
+    kernel images/clonezilla/live/vmlinuz 
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nomodeset noprompt edd=on locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 dcam@10.108.150.22:/srv/clonezilla_images/dcam /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -p true savedisk ask_user ask_user" vga=788  nosplash fetch=http://10.108.150.38/images/clonezilla/live/filesystem.squashfs
 
 LABEL Download_musmed_image_over_SSH 
-	MENU LABEL Download a MUSMED image from clonezilla.comp.dkit.ie
-	kernel images/clonezilla/live/vmlinuz 
-	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 musmed@10.108.150.22:/srv/clonezilla_images/musmed /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL Download a MUSMED image from clonezilla.comp.dkit.ie
+    kernel images/clonezilla/live/vmlinuz 
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset noprompt locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 musmed@10.108.150.22:/srv/clonezilla_images/musmed /home/partimag" ocs_live_run="ocs-sr -g auto -e1 auto -e2 -c -r -j2 -p true restoredisk ask_user sda" vga=788  nosplash fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
 
 LABEL Upload_musmed_image_over_SSH 
-	MENU LABEL Upload a MUSMED image to clonezilla.comp.dkit.ie
-	kernel images/clonezilla/live/vmlinuz 
-	append initrd=images/clonezilla/live/initrd.img boot=live config noswap nomodeset noprompt edd=on locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 musmed@10.108.150.22:/srv/clonezilla_images/musmed /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -p true savedisk ask_user ask_user" vga=788  nosplash fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+    MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
+    MENU LABEL Upload a MUSMED image to clonezilla.comp.dkit.ie
+    kernel images/clonezilla/live/vmlinuz 
+    append initrd=images/clonezilla/live/initrd.img boot=live config noswap nomodeset noprompt edd=on locales=en_IE.UTF-8 keyboard-layouts=gb ocs_prerun1="sleep 5" ocs_prerun2="sshfs -o nonempty,noatime,StrictHostKeyChecking=no,Ciphers=arcfour -p 22 musmed@10.108.150.22:/srv/clonezilla_images/musmed /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -p true savedisk ask_user ask_user" vga=788  nosplash fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
 
 LABEL GParted Live
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
@@ -105,5 +107,4 @@ LABEL Memtest86+
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
     MENU LABEL Memtest86+
     kernel images/memtest86/memtest
-
 
