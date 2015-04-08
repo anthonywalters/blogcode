@@ -26,16 +26,16 @@ MENU COLOR TIMEOUT      1;37;40 #ffaaaaff #00000000 std
 MENU TITLE DCAM PXE Menu v0.7
 
 LABEL local
-	MENU DEFAULT
-	MENU LABEL Boot from ^local drive
-	COM32 chain.c32
-	APPEND hd0
-#	localboot 0xffff
+    MENU DEFAULT
+    MENU LABEL Boot from ^local drive
+    COM32 chain.c32
+    APPEND hd0
+#    localboot 0xffff
 
 #LABEL Clonezilla-live
-#	MENU LABEL Clonezilla Live (Ramdisk)
-#	KERNEL images/clonezilla/live/vmlinuz
-#	APPEND initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset ocs_live_run="ocs-live-general" ocs_live_extra_param="" keyboard-layouts="" ocs_live_batch="no" locales="" vga=788 nosplash noprompt fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
+#    MENU LABEL Clonezilla Live (Ramdisk)
+#    KERNEL images/clonezilla/live/vmlinuz
+#    APPEND initrd=images/clonezilla/live/initrd.img boot=live config noswap nolocales edd=on nomodeset ocs_live_run="ocs-live-general" ocs_live_extra_param="" keyboard-layouts="" ocs_live_batch="no" locales="" vga=788 nosplash noprompt fetch=tftp://10.108.150.38/images/clonezilla/live/filesystem.squashfs
 
 LABEL Deploy_genlab_image
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
@@ -99,9 +99,9 @@ LABEL systemrescuecd-x86-4.4.1-i386
 
 LABEL debian-lxde
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
-	MENU LABEL debian lxde
-	KERNEL images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.vmlinuz
-	APPEND initrd=images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.initrd.img boot=live config noswap nolocales edd=on nomodeset locales="" vga=788 nosplash noprompt fetch=http://10.108.150.38/images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.squashfs
+    MENU LABEL debian lxde
+    KERNEL images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.vmlinuz
+    APPEND initrd=images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.initrd.img boot=live config noswap nolocales edd=on nomodeset locales="" vga=788 nosplash noprompt fetch=http://10.108.150.38/images/debianlxde/debian-live-7.5-amd64-lxde-desktop+nonfree.squashfs
 
 LABEL Memtest86+
     MENU PASSWD $4$xaZFPrF+$UR9XUnVie0JuX+zpTNytdCb5I2M$
