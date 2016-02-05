@@ -22,7 +22,6 @@ bundle agent install_latest_chrome
             create          => "true",
             edit_defaults   => empty,
             perms           => mo("644", "root"),
-            depends_on      => { "proxy_settings_saved" },
             edit_line       => add_chrome_repo,
             classes         => if_repaired("chrome_repo_added");
 
