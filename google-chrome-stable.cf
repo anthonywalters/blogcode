@@ -1,0 +1,40 @@
+# See https://www.google.com/linuxrepositories/
+
+# for an example promise bundle where apt sources and keys are added see here
+# https://github.com/dnaeon/proxmoxve-cfengine-debian/blob/master/inputs/apt.cf
+
+bundle agent install_latest_chrome
+{
+ 
+    vars:
+        "chrome_repo_file"  string => "/etc/apt/sources.list.d/google-chrome.list";
+        "add_key_command"   string => "/usr/bin/apt-key add $(this.promise_dirname)/files/chromekey.txt";
+
+    packages:
+        debian::
+            "google-chrome-stable"
+                package_policy  => "add",
+                package_method  => generic;
+
+    files:
+        "$(chrome_repo_file)"
+            comment         => "Define latest chrome source",
+            create          => "true",
+            edit_defaults   => empty,
+            perms           => mo("644", "root"),
+            depends_on      => { "proxy_settings_saved" },
+            edit_line       => add_chrome_repo,
+            classes         => if_repaired("chrome_repo_added");
+
+    commands:
+        chrome_repo_added::
+            "$(add_key_command)";
+
+}
+
+bundle edit_line add_chrome_repo
+{
+    insert_lines:
+        debian::
+            "deb http://dl.google.com/linux/chrome/deb/ stable main";
+}
